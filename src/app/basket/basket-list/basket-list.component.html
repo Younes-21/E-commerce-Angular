@@ -1,0 +1,28 @@
+<br>
+<div class="container">
+<table class="table">
+<thead class="thead-dark">
+<tr>
+<th scope="col">Id</th>
+<th scope="col">Date</th>
+<th scope="col">quantity</th>
+<th scope="col">Total price</th>
+<th scope="col">User Id</th>
+<th scope="col">Poduct Id</th>
+<th scope="col">Is deleted</th>
+</tr>
+</thead>
+<tbody>
+<tr *ngFor="let basket of baskets">
+<td>{{basket.id}}</td>
+<td>{{basket.date}}</td>
+<td>{{basket.quantity}}</td>
+<td>{{basket.total_price}}</td>
+<td>{{basket.id_user}}</td>
+<td>{{basket.id_product}}</td>
+<td>{{basket.is_deleted}}</td>
+
+</tr>
+</tbody>
+</table>
+</div>
