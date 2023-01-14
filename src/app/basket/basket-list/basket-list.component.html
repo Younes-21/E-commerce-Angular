@@ -1,28 +1,94 @@
-<br>
-<div class="container">
-<table class="table">
-<thead class="thead-dark">
-<tr>
-<th scope="col">Id</th>
-<th scope="col">Date</th>
-<th scope="col">quantity</th>
-<th scope="col">Total price</th>
-<th scope="col">User Id</th>
-<th scope="col">Poduct Id</th>
-<th scope="col">Is deleted</th>
-</tr>
-</thead>
-<tbody>
-<tr *ngFor="let basket of baskets">
-<td>{{basket.id}}</td>
-<td>{{basket.date}}</td>
-<td>{{basket.quantity}}</td>
-<td>{{basket.total_price}}</td>
-<td>{{basket.id_user}}</td>
-<td>{{basket.id_product}}</td>
-<td>{{basket.is_deleted}}</td>
 
-</tr>
-</tbody>
-</table>
-</div>
+ 
+	<body style="margin-top: -80px;">
+	<section class="ftco-section">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12">
+					<h3 class="h5 mb-4 text-center"><b>My cart</b></h3>
+					
+						<table class="table">
+						  <thead class="thead-primary">
+						    <tr>
+						    	<th>Id</th>
+						    	<th>Product id</th>
+						    	<th>Quantity</th>
+						      <th>Price</th>
+						      <th>User Id</th>
+						      <th>Date</th>
+						      <th>Is deleted</th>
+                              <th>Actions</th>
+						    </tr>
+						  </thead>
+						  <tbody>
+						    <tr class="alert" role="alert" *ngFor="let basket of baskets" >
+						    	<td>{{basket.id}}</td>
+						    	<td>
+						    		<div class="img" style="background-image: url(images/product-1.png);"></div>
+						    	</td>
+						      <td>
+						      	<div class="email">
+						      		<span>{{basket.quantity}} </span>
+						      	</div>
+						      </td>
+						      <td>{{basket.total_price}}</td>
+						      <td class="quantity">
+					        	{{basket.id_user}}
+				          </td>
+				          <td>{{basket.date}}</td>
+						  <td>{{basket.is_deleted}}</td>  
+                          <td>
+						      	<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+				            	<span aria-hidden="true"><i class="fa fa-close"></i></span>
+				          	</button>
+				        	</td>
+						    </tr>
+						  </tbody>
+						</table>
+					<!--Card-->
+                    <div class="card-body p-4" style="width:1000px;">
+                        
+                        <div class="row" style="width:855px; margin-left : 350px">
+                          <div class="col-lg-5" >
+                            <div class="card bg-primary text-white rounded-3">
+                              <div class="card-body">
+                                <p class="small mb-2">Card type</p>
+                                <a href="#!" type="submit" class="text-white"><i
+                                    class="fab fa-cc-mastercard fa-2x me-2"></i></a>
+                                <a href="#!" type="submit" class="text-white"><i
+                                    class="fab fa-cc-visa fa-2x me-2"></i></a>
+                                <a href="#!" type="submit" class="text-white"><i
+                                    class="fab fa-cc-amex fa-2x me-2"></i></a>
+                                <a href="#!" type="submit" class="text-white"><i class="fab fa-cc-paypal fa-2x"></i></a> 
+                                <hr class="my-4">
+                                <div class="d-flex justify-content-between">
+                                  <p class="mb-2">Subtotal</p>
+                                  <p class="mb-2">$4798.00</p>
+                                </div>
+                                <div class="d-flex justify-content-between">
+                                  <p class="mb-2">Shipping</p>
+                                  <p class="mb-2">$20.00</p>
+                                </div>
+                                <div class="d-flex justify-content-between mb-4">
+                                  <p class="mb-2">Total(Incl. taxes)</p>
+                                  <p class="mb-2">$4818.00</p>
+                                </div>
+                                <button type="button" class="btn btn-info btn-block btn-lg">
+                                  <div class="d-flex justify-content-between">
+                                    <span>$4818.00</span>
+                                    <span>Checkout <i class="fas fa-long-arrow-alt-right ms-2"></i></span>
+                                  </div>
+                                </button>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>  
+				</div>
+			</div>
+		</div>
+	</section>
+
+	</body>
+
+

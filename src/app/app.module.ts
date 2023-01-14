@@ -12,6 +12,10 @@ import { ProductDetailComponent } from './product/product-detail/product-detail.
 import { ProductCreateComponent } from './product/product-create/product-create.component';
 import { AuthComponent } from './auth/auth.component';
 import { BasketListComponent } from './basket/basket-list/basket-list.component';
+import { OrderListComponent } from './order/order-list/order-list.component';
+import { FooterComponent } from './footer/footer.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { SearchbarComponent } from './searchbar/searchbar.component';
 
 @NgModule({
   declarations: [
@@ -22,14 +26,18 @@ import { BasketListComponent } from './basket/basket-list/basket-list.component'
     ProductDetailComponent,
     ProductCreateComponent,
     AuthComponent,
-    BasketListComponent
+    BasketListComponent,
+    OrderListComponent,
+    FooterComponent,
+    SearchbarComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    FontAwesomeModule
 
   ],
   providers: [],

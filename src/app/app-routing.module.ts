@@ -5,7 +5,8 @@ import { EmpCreateComponent } from './emp/emp-create/emp-create.component';
 import { EmpListComponent } from './emp/emp-list/emp-list.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { WelcomeComponent } from './welcome/welcome.component';*/
-
+import {BasketListComponent} from './basket/basket-list/basket-list.component';
+import { OrderListComponent } from './order/order-list/order-list.component';
 const routes: Routes = [
 
   { path: '', redirectTo: 'login', pathMatch: 'full' },
@@ -15,6 +16,8 @@ const routes: Routes = [
   //{ path: 'employees', component: EmpListComponent, outlet: 'contenu' },
   //{ path: 'welcome', component: WelcomeComponent, outlet: 'contenu' },
   //{ path: 'logout', component: AuthComponent }
+  {path: 'basket' , component: BasketListComponent},
+  {path: 'order' , component: OrderListComponent},
 
 
 ];
