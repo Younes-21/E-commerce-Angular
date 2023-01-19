@@ -16,6 +16,8 @@ import { OrderListComponent } from './order/order-list/order-list.component';
 import { FooterComponent } from './footer/footer.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { SearchbarComponent } from './searchbar/searchbar.component';
+import { SigninComponent } from './login/signin/signin.component';
+import { SignupComponent } from './login/signup/signup.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +31,9 @@ import { SearchbarComponent } from './searchbar/searchbar.component';
     BasketListComponent,
     OrderListComponent,
     FooterComponent,
-    SearchbarComponent
+    SearchbarComponent,
+    SigninComponent,
+    SignupComponent
   ],
   imports: [
     BrowserModule,

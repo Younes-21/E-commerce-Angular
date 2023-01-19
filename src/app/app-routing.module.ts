@@ -7,9 +7,10 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { WelcomeComponent } from './welcome/welcome.component';*/
 import {BasketListComponent} from './basket/basket-list/basket-list.component';
 import { OrderListComponent } from './order/order-list/order-list.component';
+import { SigninComponent } from './login/signin/signin.component';
 const routes: Routes = [
 
-  { path: '', redirectTo: 'login', pathMatch: 'full' },
+  { path: '', redirectTo: 'basket', pathMatch: 'full' },
   //{ path: 'login', component: AuthComponent },
   //{ path: 'navbar', component: NavbarComponent },
   //{ path: 'create', component: EmpCreateComponent, outlet: 'contenu' },
@@ -18,6 +19,8 @@ const routes: Routes = [
   //{ path: 'logout', component: AuthComponent }
   {path: 'basket' , component: BasketListComponent},
   {path: 'order' , component: OrderListComponent},
+  {path :'basket/order', component: OrderListComponent},
+  {path:'login', component : SigninComponent}
 
 
 ];
