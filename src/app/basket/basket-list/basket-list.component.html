@@ -8,7 +8,7 @@
 					<h3 class="h5 mb-4 text-center"><b>My cart</b></h3>
 					
 					<table class="table">
-						<thead class="thead-primary">
+						<thead class="thead-primary" style="background-color: #EF7F2D;">
 						  <tr>
 							  <th>&nbsp;</th>
 							  <th>&nbsp;</th>
@@ -22,7 +22,6 @@
 						<tbody>
 						  <tr class="alert" role="alert" *ngFor="let product of baskets[0].product">
 							  <td>
-								{{product.id}} gha tir
 							  </td>
 							  <td>
 								<div class="img" style="background-image: url({{product.images[0].img}});"></div>
@@ -55,10 +54,10 @@
 					<!--Card-->
                     <div class="card-body p-4" style="width:1000px;">
                         
-                        <div class="row" style="width:855px; margin-left : 350px">
+                        <div class="row" style="width:855px; margin-left : 350px;" >
                           <div class="col-lg-5" >
-                            <div class="card bg-primary text-white rounded-3">
-                              <div class="card-body">
+                            <div class="card bg-primary text-white rounded-3" style="border-color: #EF7F2D;" >
+                              <div class="card-body" style="background-color: #EF7F2D;">
                                 <p class="small mb-2">Card type</p>
                                 <a href="#!" type="submit" class="text-white"><i
                                     class="fab fa-cc-mastercard fa-2x me-2"></i></a>

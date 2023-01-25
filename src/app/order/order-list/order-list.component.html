@@ -15,14 +15,14 @@
                           <div class="col-md-6">
                             <div class="form-outline form-white">
                               <input type="text" id="typeExp" class="form-control form-control-lg"
-                                placeholder="Enter your first Name" size="32" id="exp"  />
+                                placeholder="Enter your first Name" size="32" id="exp" value="{{user.first_name}}" readonly />
                               <label class="form-label" for="typeExp">First Name</label>
                             </div>
                           </div>
                           <div class="col-md-6">
                             <div class="form-outline form-white">
-                              <input type="password" id="typeText" class="form-control form-control-lg"
-                                placeholder="Enter your last name" size="30" />
+                              <input type="text" id="typeText" class="form-control form-control-lg"
+                                placeholder="Enter your last name" size="30" value="{{user.last_name}}" readonly/>
                               <label class="form-label" for="typeText">Last name</label>
                             </div>
                           </div>
@@ -31,15 +31,15 @@
                         <div class="row mb-4">
                             <div class="col-md-6">
                               <div class="form-outline form-white">
-                                <input type="text" id="typeExp" class="form-control form-control-lg"
-                                  placeholder="Enter your home adress" size="32" id="exp"  />
+                                <input type="text" id="typeText" class="form-control form-control-lg"
+                                  placeholder="Enter your home adress" size="30" value="{{user.address}}" readonly />
                                 <label class="form-label" for="typeExp">Home adress</label>
                               </div>
                             </div>
                             <div class="col-md-6">
                               <div class="form-outline form-white">
-                                <input type="password" id="typeText" class="form-control form-control-lg"
-                                  placeholder="Enter your email adress" size="30" />
+                                <input type="text" id="typeText" class="form-control form-control-lg"
+                                  placeholder="Enter your email adress" size="30" value="{{user.email}}" readonly />
                                 <label class="form-label" for="typeText">Email Adress</label>
                               </div>
                             </div>
@@ -49,27 +49,17 @@
                             <div class="col-md-6">
                               <div class="form-outline form-white">
                                 <input type="text" id="typeExp" class="form-control form-control-lg"
-                                  placeholder="Enter your credit card number" size="32" id="exp"  />
+                                  placeholder="Enter your credit card number" size="32" id="exp" value="{{user.credit_card}}" readonly />
                                 <label class="form-label" for="typeExp">Credit card</label>
                               </div>
                             </div>
                             <div class="col-md-6">
                               <div class="form-outline form-white">
-                                <input type="password" id="typeText" class="form-control form-control-lg"
-                                  placeholder="Enter your email adress" size="30" />
-                                <label class="form-label" for="typeText">Email Adress</label>
+                                <input type="text" id="typeText" class="form-control form-control-lg"
+                                  placeholder="Enter your email adress" size="30" value="{{user.phone}}" readonly/>
+                                <label class="form-label" for="typeText">Phone number</label>
                               </div>
                             </div>
-                          </div>
-                          <div class="row mb-4">
-                            <div class="col-md-6">
-                              <div class="form-outline form-white">
-                                <input type="text" id="typeExp" class="form-control form-control-lg"
-                                  placeholder="Enter your phone number" size="32" id="exp"  />
-                                <label class="form-label" for="typeExp">Phone number</label>
-                              </div>
-                            </div>
-                           
                           </div>
                       </form>
                       </div>
@@ -80,8 +70,8 @@
                 </div>
                 <div class="col-lg-5">
   
-                  <div class="card bg-primary text-white rounded-3" style="border-color:#99B19C" >
-                    <div class="card-body" style="background-color: #99B19C; border-style:none">  
+                  <div class="card bg-primary text-white rounded-3" style="border-color:#EF7F2D" >
+                    <div class="card-body" style="background-color:#EF7F2D; border-style:none">  
                       <p class="small mb-2" >Card type</p>
                       <a href="#!" type="submit" class="text-white"><i
                           class="fab fa-cc-mastercard fa-2x me-2"></i></a>
@@ -97,14 +87,18 @@
     <p class="mb-2"><b><h5>Product</h5></b></p>
     <p class="mb-2"><b><h5>Price</h5></b></p>
   </div>
-  <div class="d-flex justify-content-between" *ngFor="let order of orders">
+  <!--<div class="d-flex justify-content-between" *ngFor="let order of userorders" >
     <p class="mb-2">{{order.product[0].name}}</p>
     <p class="mb-2">${{order.quantity * order.product[0].selling_price}}</p>
-  </div>
+ </div> -->
+ <div class="d-flex justify-content-between" *ngFor="let product of userordersproducts" >
+  <p class="mb-2">{{product.name}}</p>
+  <p class="mb-2">${{product.selected_quantity * product.selling_price}}</p>
+</div> 
   <hr>
                       <div class="d-flex justify-content-between">
                         <p class="mb-2">Subtotal</p>
-                        <p class="mb-2">${{Subtotal()}}</p>
+                       <p class="mb-2">${{Subtotal()}}</p>
                       </div>
   
                       <div class="d-flex justify-content-between">
@@ -117,9 +111,9 @@
                         <p class="mb-2">${{Subtotal()+20}}</p>
                       </div>
   
-                      <button type="button" class="btn btn-info btn-block btn-lg" style="background-color:#f8f8f8;border-color:#99B19C;">
+                      <button (click)="addBillandDelivery()" type="button" class="btn btn-info btn-block btn-lg" style="background-color:#f8f8f8;border-color:#99B19C;">
                         <div class="d-flex justify-content-between">
-                          <span>${{Subtotal()+20}}</span>
+                          <span>${{Subtotal()+20}}&nbsp;</span>
                           <span>Checkout <i class="fas fa-long-arrow-alt-right ms-2" ></i></span>
                         </div>
                       </button>

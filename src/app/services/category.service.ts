@@ -1,20 +1,18 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
-const API_GET_USERS = 'http://localhost:8082/api/user/users';
+const API_GET_CATEGORIES = 'http://localhost:8082/api/category/categories';
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
   };
-  
-
 
 @Injectable({
   providedIn: 'root'
 })
-export class UserService {
+export class CategoryService {
 
   constructor(private http: HttpClient) { }
-getUsers():Observable<any>{
-  return this.http.get(API_GET_USERS);
-}
+  getAll(): Observable<any> {
+    return this.http.get(API_GET_CATEGORIES);
+    }
 }

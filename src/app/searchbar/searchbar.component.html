@@ -1,4 +1,4 @@
-<nav class="navbar navbar-light bg-light justify-content-between">
+<!--<nav class="navbar navbar-light bg-light justify-content-between">
       <form class="form-inline d-flex align-items-center mx-auto">
       <div class="form-group mr-2">
         <select style="width: 120px;" class="form-control">
@@ -12,4 +12,29 @@
       &nbsp;
       <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
     </form>
-  </nav>
+  </nav>-->
+  <div class="hero__search" style="margin-left:390px;margin-top:15px;">
+    <div class="hero__search__form" style="background-color:white;">
+        <form action="#">
+            <div class="hero__search__categories">
+              <select  style="border:none;width :160px;margi-right:20px;">
+              <option selected>Select a category</option>
+                <option *ngFor="let category of categories">{{  category.name  }}</option>
+              </select>
+                <span class="arrow_carrot-down">
+                </span>
+            </div>
+            <input type="text" placeholder="What do yo u need?">
+            <button type="submit" class="site-btn" style="background-color : #EF7F2D">SEARCH</button>
+        </form>
+    </div>
+    <!-- <div class="hero__search__phone" >
+        <div class="hero__search__phone__icon">
+            <i class="fa fa-phone" style="color : #EF7F2D"></i>
+        </div>
+       <div class="hero__search__phone__text">
+            <h5>+65 11.188.888</h5>
+            <span>support 24/7 time</span>
+        </div>
+    </div>-->
+</div>

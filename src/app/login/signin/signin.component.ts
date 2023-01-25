@@ -10,6 +10,8 @@ export class SigninComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+   // localStorage.setItem('connected', 'true');
+
   }
 
 }

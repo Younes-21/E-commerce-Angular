@@ -20,7 +20,7 @@ export class OrderService {
       return this.http.post(API_GET_ORDERS, data,{responseType:
       'text' as 'json'});
       }*/
-      createOrder(order: Order): Observable<Object> {
+      createOrder(order: any): Observable<Object> {
         return this.http.post(API_GET_ORDERS, order);
         }
       
