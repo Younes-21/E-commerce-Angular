@@ -23,5 +23,10 @@ export class OrderService {
       createOrder(order: any): Observable<Object> {
         return this.http.post(API_GET_ORDERS, order);
         }
+        
+      updateOrder(id: number, data: any): Observable<string> {
+          return this.http.put<string>(`${API_GET_ORDERS}/${id}`, 
+          data,{responseType: 'text' as 'json'});
+          }
       
 }

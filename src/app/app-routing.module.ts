@@ -8,6 +8,8 @@ import { WelcomeComponent } from './welcome/welcome.component';
 import {BasketListComponent} from './basket/basket-list/basket-list.component';
 import { OrderListComponent } from './order/order-list/order-list.component';
 import { SigninComponent } from './login/signin/signin.component';
+import { BillsListComponent } from './bill/bills-list/bills-list.component';
+import { DeliveriesListComponent } from './delivery/deliveries-list/deliveries-list.component';
 const routes: Routes = [
 
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -21,8 +23,9 @@ const routes: Routes = [
   {path: 'basket' , component: BasketListComponent},
   {path: 'order' , component: OrderListComponent},
   {path :'basket/order', component: OrderListComponent},
-  {path:'login', component : SigninComponent}
-
+  {path:'login', component : SigninComponent},
+  {path:'bills',component : BillsListComponent},
+  {path:'deliveries',component : DeliveriesListComponent}
 
 ];
 

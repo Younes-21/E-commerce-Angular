@@ -15,5 +15,9 @@ export class BasketService {
   getAllBaskets(): Observable<any> {
     return this.http.get(API_GET_BASKETS);
     }
-    
+
+    updateBasket(id: number, data: any): Observable<string> {
+      return this.http.put<string>(`${API_GET_BASKETS}/${id}`, 
+      data,{responseType: 'text' as 'json'});
+      }
 }

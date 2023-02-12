@@ -14,4 +14,8 @@ export class ProductService {
   getAll(): Observable<any>{
     return this.http.get(API_GET_PRODUCTS)
   }
+  updateProduct(id: number, data: any): Observable<string> {
+    return this.http.put<string>(`${API_GET_PRODUCTS}/${id}`, 
+    data,{responseType: 'text' as 'json'});
+    }
 }

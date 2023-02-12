@@ -18,6 +18,8 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { SearchbarComponent } from './searchbar/searchbar.component';
 import { SigninComponent } from './login/signin/signin.component';
 import { SignupComponent } from './login/signup/signup.component';
+import { BillsListComponent } from './bill/bills-list/bills-list.component';
+import { DeliveriesListComponent } from './delivery/deliveries-list/deliveries-list.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +35,9 @@ import { SignupComponent } from './login/signup/signup.component';
     FooterComponent,
     SearchbarComponent,
     SigninComponent,
-    SignupComponent
+    SignupComponent,
+    BillsListComponent,
+    DeliveriesListComponent
   ],
   imports: [
     BrowserModule,

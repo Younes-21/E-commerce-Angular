@@ -1,0 +1,73 @@
+
+ 
+	<body style="margin-top: -80px;">
+    <section class="ftco-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <h3 class="h5 mb-4 text-center"><b>My bills</b></h3>
+                    
+                    <table class="table">
+                        <thead class="thead-primary" style="background-color: #EF7F2D;">
+                          <tr>
+                              <th>&nbsp;</th>
+                              <th>&nbsp;</th>
+                              <th>Product</th>
+                            <th>Price</th>
+                            <th>Quantity</th>
+                            <th>Delivery price</th>
+                            <th>Total paid</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          
+                          <tr class="alert" role="alert" *ngFor="let array of billss | slice:1;">
+                              <td>
+                              </td>
+                              <td><ng-container *ngFor="let bill of array.product">
+                                <div class="img" style="background-image: url({{bill.images[0].img}});"></div>
+                                <br>
+                                <!--  {{product.images[0].img}} -->
+                              </ng-container></td>
+                            
+                            <td>
+                             
+                                <div class="email">
+                                   <ng-container *ngFor="let bill of array.product">
+                                    <span>{{bill.name}} </span>
+                                    <span></span>
+                                  </ng-container>
+                                </div>
+                              
+                            </td>
+                            <td><ng-container *ngFor="let bill of array.product">{{bill.selling_price}}<br></ng-container></td>
+                            <td class="quantity">
+                              <div class="input-group">
+                              <!-- <input type="text" name="quantity" class="quantity form-control input-number" value="2" min="1" max="100">
+                            --><ng-container *ngFor="let bill of array.product">
+                                  &nbsp;&nbsp;&nbsp; {{bill.selected_quantity}}<br>
+                                </ng-container>
+                        </div>
+                        </td>
+                        <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;20$</td>
+                        <td>
+                         <!--<ng-container *ngFor="let bill of array.product">
+                            &nbsp;&nbsp;&nbsp;{{bill.selected_quantity*bill.selling_price+20}}$<br>
+                          </ng-container>--> 
+                          &nbsp;&nbsp;&nbsp;{{array.total_paid}}
+                        </td>	
+                        
+                        </tr>
+                       
+                        
+                        </tbody>
+                    </table>
+                    
+                </div>
+            </div>
+        </div>
+    </section>
+
+    </body>
+
+
