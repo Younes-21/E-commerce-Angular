@@ -5,9 +5,6 @@ const API_GET_USERS = 'http://localhost:8082/api/user/users';
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
   };
-  
-
-
 @Injectable({
   providedIn: 'root'
 })

@@ -1,33 +1,25 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <!-- Design by foolishdeveloper.com -->
-    <title>Glassmorphism login Form Tutorial in html css</title>
- 
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&display=swap" rel="stylesheet">
-    <!--Stylesheet-->
-</head>
-<body>
-    <div class="background">
-        <div class="shape"></div>
-        <div class="shape"></div>
-    </div>
-    <form>
-        <h3>Login Here</h3>
+<div class="container mb-5" style="margin-left : 200px; margin-top:20px">
+  <div class="row">
+      <h4 class="text-center" style="margin-left : -120px" > <strong>Login :</strong> </h4>
+      <div class="card p-5" style="width: 32rem; margin-left: 200px" >
+          <div class="form-group">
+              <label for="name">Email</label>
+              <input type="email" class="form-control" id="email" required [(ngModel)]="email" name="email" ngModel />
+          </div>
+          <div class="form-group mb-3">
+              <label for="name">Password</label>
+              <input type="password" class="form-control" id="password" required [(ngModel)]="password" name="password" ngModel />
+          </div>
+          <a  type="submit" (click)="login()" class="btn btn-primary fadeIn fourth" style="background-color: #EF7F2D; border-color:#EF7F2D; color: white; width:100px;height:30px;margin-left:150px;" >Log In</a>
+          <div *ngIf="!connect" class="alert alert-danger text-center" role="alert" style="height:60px; margin-top: 15px;">
+            <span style=" font-size: 15px;">
+              Email ou mot de passe incorrecte!!
+            </span>
+          </div>        
+          <a role="button"  class="p-2" ><h6>Create an account ?</h6></a>
+        <!--  <div *ngIf="errorMessage" class="alert alert-danger" role="alert"> {{errorMessage}}</div>-->
+      </div>
 
-        <label for="username">Username</label>
-        <input type="text" placeholder="Email or Phone" id="username">
-
-        <label for="password">Password</label>
-        <input type="password" placeholder="Password" id="password">
-
-        <button>Log In</button>
-        <div class="social">
-          <div class="go"><i class="fab fa-google"></i>  Google</div>
-          <div class="fb"><i class="fab fa-facebook"></i>  Facebook</div>
-        </div>
-    </form>
-</body>
-</html>
+                      
+  </div>
+</div>

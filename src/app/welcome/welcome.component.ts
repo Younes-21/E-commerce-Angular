@@ -10,16 +10,21 @@ import { ProductService } from '../services/product.service';
 })
 export class WelcomeComponent implements OnInit {
   products?:any;
+  UserRole=localStorage.getItem('UserRole');
   constructor(private productService : ProductService) { }
-
+  
   ngOnInit(): void {
+    
     this.productService.getAll().subscribe(
+      
       data =>{
         this.products = data;
         console.log("products",this.products)
-       // localStorage.setItem('connected', 'false');
+        console.log("User roleeeeeeeeeeeee:",this.UserRole)
+        
       } 
     )
+
   }
 
 }

@@ -11,6 +11,8 @@ import { ProductService } from 'src/app/services/product.service';
   styleUrls: ['./deliveries-list.component.css']
 })
 export class DeliveriesListComponent implements OnInit {
+UserId=localStorage.getItem('UserId');
+connecteduserorders:any;
 today = new Date();
 deliveries?:any;
 errormessage?:string;
@@ -33,7 +35,6 @@ products?:any;
     this.productService.getAll().subscribe(
       data => {
       this.products = data;
-      //console.log("full products here",this.products)
       console.log("1")
       },
       err => {
@@ -43,8 +44,16 @@ products?:any;
     this.orderService.getAllOrders().subscribe(
       data => {
       this.orders = data;
-      console.log("full orders here",this.orders[0].product)
-     console.log("2")
+      let orders: any[]=[];
+      let z=0;
+      for(let i=0;i<this.orders.length;i++){
+        if(this.orders[i].user.id == this.UserId){
+          orders[z] = this.orders[i];
+          z++;
+        }
+      }
+      this.connecteduserorders = orders;
+      console.log("connecetd uer orders:",this.connecteduserorders)
       },
       err => {
       this.errormesssage = JSON.parse(err.error).message;
@@ -57,21 +66,11 @@ products?:any;
       console.log("full deliveries here",this.deliveries[0].id)
       let k=0;
       console.log("3")
-  
-      let deliveries: any[]=[{
-        /*product : null,
-        start_date : null,
-        arrived_date : null*/
-      }]
-      let deliveriestoshow1: any[]=[];
-      /*type MyArrayType = Array<{start_date: string , arrived_date:string}>;
-
-      const arr: MyArrayType = [{start_date: "" , arrived_date:""}];*/
       for(let i=0;i<this.deliveries.length;i++){
         console.log("4")
-         for(let j=0;j<this.orders.length;j++){
-           if(this.deliveries[i].order.id == this.orders[j].id){
-              this.deliveriess.push({product : this.orders[j].product , start_date : this.deliveries[i].start_date , arrived_date : this.deliveries[i].arrived_date})
+         for(let j=0;j<this.connecteduserorders.length;j++){
+           if(this.deliveries[i].order.id == this.connecteduserorders[j].id){
+              this.deliveriess.push({product : this.connecteduserorders[j].product , start_date : this.deliveries[i].start_date , arrived_date : this.deliveries[i].arrived_date})
            }
          }
       }

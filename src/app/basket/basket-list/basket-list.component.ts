@@ -16,6 +16,7 @@ import { BillService } from 'src/app/services/bill.service';
   styleUrls: ['./basket-list.component.css']
 })
 export class BasketListComponent implements OnInit {
+UserId=localStorage.getItem('UserId');
 baskets?:any;
 users?:any;
 today1 = new Date();
@@ -32,6 +33,7 @@ orderss?:any;
 test?:any;
 tt?:any;
 userbasket?:any;
+connecteduser:any;
 // to try
 //products?:any;
 products : Array<Product> = new Array();
@@ -44,39 +46,47 @@ products : Array<Product> = new Array();
       data =>{
         this.baskets = data;
         console.log("basket",this.baskets[0])
-        this.userbasket = this.baskets[0];
-       /*console.log("hiiii",this.baskets)
-       console.log("heeellooo",this.baskets[0].product[0].images[0].img)*/
-       //console.log("notre data ici",this.data.product)
+        for(let i=0;i<this.baskets.length;i++){
+          console.log("test icii",this.baskets[i].user.id)
+          if(this.baskets[i].user.id == this.UserId){
+            this.userbasket = this.baskets[i];
+            console.log("userbasket here",this.userbasket)
+          }
+        }
+       
       } 
     )
     this.userService.getUsers().subscribe(
       data =>{
         this.users = data;
+        for(let i=0;i<this.users.length;i++){
+          if(this.users[i].id == this.UserId){
+            this.connecteduser=this.users[i];
+          }
+                }
       } 
     )
 
     this.orderService.getAllOrders().subscribe(
       data =>{
         this.orderss = data;
-        console.log("Orders",this.orderss/*[0].product[0].name*/)
+        console.log("Orders",this.orderss)
       } 
     )
   }
  
   Total(): number{
-    for(let i=0;i<this.baskets[0].product.length;i++){
-      this.total =this.total+(this.baskets[0].product[i].selected_quantity*this.baskets[0].product[i].selling_price); 
+    for(let i=0;i<this.userbasket.product.length;i++){
+      this.total =this.total+(this.userbasket.product[i].selected_quantity*this.userbasket.product[i].selling_price); 
     }
-   // console.log("ici n :",this.total)
     this.p=this.total;
     this.total=0;
     return this.p;
   }
 
     addOrder(): void {
-      console.log("verifier les produits",this.baskets[0].product)
-      this.products = this.baskets[0].product
+      console.log("verifier les produits",this.userbasket.product)
+      this.products = this.userbasket.product
       let data = {
         "id": 200,
         "delivery_price": 20.0,
@@ -86,13 +96,12 @@ products : Array<Product> = new Array();
         "shipped": this.tomorrow,
         "status": "unpaid",
         "total": this.p,
-        "user": this.users[0],
+        "user": this.connecteduser,
         "product":this.products,
     }
       this.orderService.createOrder(data).subscribe(
       response =>{
         this.test = response;
-        //localStorage.setItem('OrderID',this.test.id)
       this.router.navigate(['/order']);
           },
       error => {
@@ -106,7 +115,6 @@ products : Array<Product> = new Array();
 
       updateBasket(id:number): void{
         console.log("here:D",id)
-       // console.log(this.userbasket)
         for(let i=0;i<this.userbasket.product.length;i++){
           if(this.userbasket.product[i].id == id){
             console.log("detected")

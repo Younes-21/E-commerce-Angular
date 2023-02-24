@@ -18,7 +18,8 @@ import { ProductService } from 'src/app/services/product.service';
   styleUrls: ['./order-list.component.css']
 })
 export class OrderListComponent implements OnInit {
-  
+  UserId=localStorage.getItem('UserId');
+  connecteduser:any;
   user?:any;
   users?:any;
   orders?: any;
@@ -52,39 +53,27 @@ export class OrderListComponent implements OnInit {
     this.userService.getUsers().subscribe(
       data =>{
         this.users = data;
-        this.user = this.users[0];
-        console.log("users here :",this.users)
-        console.log("connected user :",this.user)
+        for(let i=0;i<this.users.length;i++){
+          if(this.users[i].id == this.UserId){
+            this.connecteduser=this.users[i];
+          }
+                }
 
       }
     ),
-// c'est icii
     this.orderService.getAllOrders().subscribe(
       data =>{
         this.orders = data;
         console.log("all orders:",this.orders[0].status);
-       // let userorders: any[] = [];
         let k=0;
         for(let i=0;i<this.orders.length;i++){
-          if(this.orders[i].status == "unpaid" && this.orders[i].user.id == this.user.id){
-          //  userorders[k]=this.orders[i];
-            //k++;
+          if(this.orders[i].status == "unpaid" && this.orders[i].user.id == this.UserId){
             this.userorderss = this.orders[i];
           }
         }
         console.log("my order :",this.userorderss.product)
-        //this.userorders = userorders;
-       // console.log("user orders ext :",this.userorders)  
-        //console.log("pour tester",this.userorders[1].product)  
         let products: any[]=[];
         let z=0;
-        /*for(let a=0;a<this.userorders.length;a++){
-          for(let j=0;j<this.userorders[a].product.length;j++){
-             products[z]=this.userorders[a].product[j];
-             z++;
-             console.log("ki dkhl")
-          }
-        }*/
         for(let j=0;j<this.userorderss.product.length;j++){
           products[z]=this.userorderss.product[j];
           z++;
@@ -99,14 +88,11 @@ export class OrderListComponent implements OnInit {
         console.log("baskets here", this.baskets[0].user.id)
       let l=0;
       for(let r=0;r<this.baskets.length;r++){
-        if(this.baskets[r].user.id == this.user.id){
+        if(this.baskets[r].user.id == this.UserId){
           console.log("fouund");
           this.userbasket = this.baskets[r];
           console.log("user basket:",this.userbasket)
-          //this.test = this.userbasket;
-          //this.test.product = null;
-          //console.log("test variable :",this.test)
-
+         
         }
       }
       }
@@ -189,7 +175,6 @@ export class OrderListComponent implements OnInit {
             }
           }
 
-   // }
     this.router.navigate(['/bills']);
 
   }

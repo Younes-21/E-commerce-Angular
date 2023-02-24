@@ -20,6 +20,10 @@ import { SigninComponent } from './login/signin/signin.component';
 import { SignupComponent } from './login/signup/signup.component';
 import { BillsListComponent } from './bill/bills-list/bills-list.component';
 import { DeliveriesListComponent } from './delivery/deliveries-list/deliveries-list.component';
+import { CategoryCreateComponent } from './category/category-create/category-create.component';
+import { CategoryListComponent } from './category/category-list/category-list.component';
+import { CategoryEditComponent } from './category/category-edit/category-edit.component';
+import { ProductEditComponent } from './product/product-edit/product-edit.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +41,11 @@ import { DeliveriesListComponent } from './delivery/deliveries-list/deliveries-l
     SigninComponent,
     SignupComponent,
     BillsListComponent,
-    DeliveriesListComponent
+    DeliveriesListComponent,
+    CategoryCreateComponent,
+    CategoryListComponent,
+    CategoryEditComponent,
+    ProductEditComponent
   ],
   imports: [
     BrowserModule,

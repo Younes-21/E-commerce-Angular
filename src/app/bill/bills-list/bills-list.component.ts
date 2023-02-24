@@ -11,12 +11,14 @@ import { ProductService } from 'src/app/services/product.service';
   styleUrls: ['./bills-list.component.css']
 })
 export class BillsListComponent implements OnInit {
+  UserId=localStorage.getItem('UserId');
   orders?:any;
   bills?:any;
   errormessage?:string;
   errormesssage?:string;
   products?:any;
   billstoshow?:any;
+  connecteduserorders:any;
   billss=[
     {
     product :null,
@@ -31,7 +33,6 @@ export class BillsListComponent implements OnInit {
     this.productService.getAll().subscribe(
       data => {
       this.products = data;
-      //console.log("full products here",this.products)
       console.log("1")
       },
       err => {
@@ -41,8 +42,17 @@ export class BillsListComponent implements OnInit {
     this.orderService.getAllOrders().subscribe(
       data => {
       this.orders = data;
-     // console.log("full orders here",this.orders[0].product)
-     console.log("2")
+      let orders: any[]=[];
+      let z=0;
+      for(let i=0;i<this.orders.length;i++){
+        if(this.orders[i].user.id == this.UserId){
+          orders[z] = this.orders[i];
+          z++;
+        }
+      }
+      this.connecteduserorders = orders;
+      console.log("connecetd uer orders:",this.connecteduserorders)
+     console.log("orders",this.orders)
       },
       err => {
       this.errormesssage = JSON.parse(err.error).message;
@@ -52,32 +62,17 @@ export class BillsListComponent implements OnInit {
       data => {
       this.bills = data;
       console.log("3")
-      //console.log("full bills here",this.bills[0].total_price)
-      //console.log("bills here",this.bills[0].order.id)
       let k=0;
       console.log("4")
-      let billstoshoww ={};
-      //let billstoshow1 = [];
-      let billstoshow1: any[]=[];
       for(let i=0;i<this.bills.length;i++){
         console.log("5")
-         for(let j=0;j<this.orders.length;j++){
-           if(this.bills[i].order.id == this.orders[j].id){
-           //this is the old methode (it works but the new one is better)
-           /* billstoshow1[k]=this.orders[j].product;
-            console.log("affecté",billstoshow1);
-            k++;
-            console.log("la valeur de k mtn",k);*/
-            this.billss.push({product : this.orders[j].product , delivery_price : this.orders[j].delivery_price , total_paid : this.bills[i].total_price})
+         for(let j=0;j<this.connecteduserorders.length;j++){
+           if(this.bills[i].order.id == this.connecteduserorders[j].id){
+            this.billss.push({product : this.connecteduserorders[j].product , delivery_price : this.connecteduserorders[j].delivery_price , total_paid : this.bills[i].total_price})
             
            }
          }
       }
-   //   console.log("billtoshowresultat",billstoshow1)
-//this.billstoshoww = billstoshow1;
-this.billstoshow = billstoshow1;
-//console.log("resultat final billstoshow1",billstoshow1)
-//console.log("resultat final this.billstoshow",this.billstoshow)//[0][0])
 console.log("biiills",this.billss)
 },
       err => {

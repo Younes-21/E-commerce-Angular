@@ -10,6 +10,14 @@ import { OrderListComponent } from './order/order-list/order-list.component';
 import { SigninComponent } from './login/signin/signin.component';
 import { BillsListComponent } from './bill/bills-list/bills-list.component';
 import { DeliveriesListComponent } from './delivery/deliveries-list/deliveries-list.component';
+import { CategoryCreateComponent } from './category/category-create/category-create.component';
+import { CategoryListComponent } from './category/category-list/category-list.component';
+import { CategoryEditComponent } from './category/category-edit/category-edit.component';
+import { ProductListComponent } from './product/product-list/product-list.component';
+import { ProductDetailComponent } from './product/product-detail/product-detail.component';
+import { ProductCreateComponent } from './product/product-create/product-create.component';
+import { ProductEditComponent } from './product/product-edit/product-edit.component';
+import { FooterComponent } from './footer/footer.component';
 const routes: Routes = [
 
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -23,10 +31,17 @@ const routes: Routes = [
   {path: 'basket' , component: BasketListComponent},
   {path: 'order' , component: OrderListComponent},
   {path :'basket/order', component: OrderListComponent},
-  {path:'login', component : SigninComponent},
+  {path:'signin', component : SigninComponent},
   {path:'bills',component : BillsListComponent},
-  {path:'deliveries',component : DeliveriesListComponent}
-
+  {path:'deliveries',component : DeliveriesListComponent},
+  {path:'categories',component: CategoryCreateComponent},
+  {path: 'category-list', component : CategoryListComponent},
+  {path : 'category-create' ,component : CategoryCreateComponent},
+  {path : 'category-edit' , component : CategoryEditComponent},
+  {path :'products', component : ProductListComponent},
+  {path :'product-detail',component : ProductDetailComponent},
+  {path :'product-create' ,component : ProductCreateComponent},
+  {path : 'product-edit',component : ProductEditComponent},
 ];
 
 @NgModule({

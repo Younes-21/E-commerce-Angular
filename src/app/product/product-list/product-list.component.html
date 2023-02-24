@@ -1,1 +1,41 @@
-<p>product-list works!</p>
+<a *ngIf="UserRole=='client' || UserRole=='admin'" class="btn mb-5" style="color: white; background-color :#EF7F2D;margin-left:620px;margin-top:25px" (click)="goToProductCreate()">Add Product</a>
+
+<div class="container">
+<div *ngIf="!UserRole" style="margin-top:20px">
+
+</div>
+        <div class="row mb-5">
+        <div class="col-4" *ngFor="let product of products" role="button">
+            <div class="card mb-5" style="width: 18rem;"  (click)="goToProductDetail(product.id); $event.stopPropagation();">
+                <div class="position-relative">
+
+                   <div  *ngIf="product.images[0]; else hiddenText">
+    
+                    <img src={{product.images[0].img}} style="height: 200px;" class="card-img-top rounded float-start" alt={{product.name}}>
+                    </div>
+                    <ng-template #hiddenText>
+                        <img src="https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/amazon-tech-products-2021-1635430982.jpg" style="height: 200px;" class="card-img-top rounded float-start" alt={{product.name}}>
+                    </ng-template>
+                    <div  class="d-flex justify-content-center position-absolute" style="top: 100%; left: 30%">
+                       
+                        <a (click)="goToProductDetail(product.id); $event.stopPropagation();" class="m-2"><i style="color: #EF7F2D;" class="fa fa-info-circle" aria-hidden="true"></i></a>
+                        <a *ngIf="UserRole=='client'||UserRole=='admin'" (click)="addToBasket(product.id); $event.stopPropagation();" class="m-2"><i style="color: #EF7F2D;" class="fa fa-cart-plus" aria-hidden="true"></i></a>
+                       
+                        <a *ngIf="UserRole=='admin'" (click)="editProduct(product.id); $event.stopPropagation();" class="m-2" ><i style="color: #EF7F2D;" class="fa fa-pencil-square" aria-hidden="true"></i></a>
+                        <a *ngIf="UserRole=='admin'" (click)="deleteProduct(product.id); $event.stopPropagation();" class="m-2"><i style="color: #EF7F2D;" class="fa fa-trash" aria-hidden="true"></i></a>
+
+
+                    </div>
+                </div>
+                <div  class="card-body" style="margin-top: 30px;">
+
+                    <h5 class="card-title text-center">{{product.name}}</h5>
+                    <p class="card-text text-center">{{product.selling_price}} $</p>
+                </div>
+            
+            </div>
+        </div>
+    </div>
+    
+    
+</div>
